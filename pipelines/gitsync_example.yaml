@@ -1,0 +1,6 @@
+# Each .yaml needs a same-base-name .alloy next to it.
+# https://github.com/grafana/fleet-management-sync-action
+name: gitsync_example
+enabled: true
+matchers:
+  - environment=production

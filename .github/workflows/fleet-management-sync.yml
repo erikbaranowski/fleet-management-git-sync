@@ -1,0 +1,23 @@
+name: Sync pipelines to Fleet Management
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pipelines/**'
+      - '.github/workflows/fleet-management-sync.yml'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: grafana/fleet-management-sync-action@v0.2.0
+        with:
+          pipelines-root-path: './pipelines'
+          fm-url: ${{ secrets.FM_URL }}
+          fm-username: ${{ secrets.FM_USERNAME }}
+          fm-token: ${{ secrets.FM_TOKEN }}
+          namespace: ${{ github.event.repository.name }}
