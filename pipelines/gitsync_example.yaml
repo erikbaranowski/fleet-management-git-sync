@@ -3,4 +3,4 @@
 name: gitsync_example
 enabled: true
 matchers:
-  - alloy-gitsync-example=true
+  - alloy_gitsync_example=true
